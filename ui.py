@@ -9,6 +9,7 @@ from PIL import Image, ImageTk
 #         window.grid_columnconfigure(0, minsize=event.width)
 
 window = Tk()
+#test
 window.title("POS Tech Store Hala Madrid")
 window.geometry("965x722")
 icon_image = Image.open('D:\\Materi\\Kuliah\\Kerjaan\\Asisten Dosen\\Prinsip Pemrograman\\pythonwindows\\uas\\pict.jpg')
