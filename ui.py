@@ -1,5 +1,5 @@
 from tkinter import *
-from fungsi import total
+from fungsi import total_laptop
 from PIL import Image, ImageTk
 
 # def limit_width(event, max_width):
@@ -152,7 +152,7 @@ input_hargaaccessorytax.grid(row=5, column=4, padx=5, pady=10)
 buttonframe = LabelFrame(daftarmenu, bd=8, relief=GROOVE, bg="gray20", fg="gold")
 buttonframe.grid(row=4, column=6, columnspan=4, padx=8, pady=5, sticky="ew")
 
-totalButton = Button(buttonframe, text="Total", font=("Arial", 15), bg='gray20', fg='white', command=total)
+totalButton = Button(buttonframe, text="Total", font=("Arial", 15), bg='gray20', fg='white', command=total_laptop(input_asustuf, input_lenovoleg, input_msigam))
 totalButton.grid(row=0, column=7, padx=5,pady=5)
 
 
@@ -160,6 +160,7 @@ printButton = Button(buttonframe, text="Print", font=("Arial", 15), bg='gray20',
 printButton.grid(row=0, column=8, padx=5, pady=5)
 
 control_image = Image.open('D:\\Materi\\Kuliah\\Kerjaan\\Asisten Dosen\\Prinsip Pemrograman\\pythonwindows\\uas\\madrid.png')
+#ganti direktori ini menjadi direktori tempat anda menyimpan gambar
 control_image = control_image.resize((75, 100), Image.LANCZOS)
 control_img = ImageTk.PhotoImage(control_image)
 
