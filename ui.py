@@ -1,5 +1,5 @@
 from tkinter import *
-from fungsi import total_laptop
+# from fungsi import total_laptop
 from PIL import Image, ImageTk
 
 # def limit_width(event, max_width):
@@ -53,16 +53,19 @@ asustuf = Label(laptop, text="Asus TUF", font=("Arial", 15),bg="grey20", fg="gol
 asustuf.grid(row=0, column=0, padx=1, pady=5, sticky="w")
 input_asustuf = Entry(laptop, width=5, borderwidth=5, relief=GROOVE)
 input_asustuf.grid(row=0, column=1, padx=10, pady=10)
+input_asustuf.insert(0, 0)
 
 lenovoleg = Label(laptop, text="Lenovo LEGION", font=("Arial", 15), bg="grey20", fg="gold")
 lenovoleg.grid(row=1, column=0, padx=5, pady=5, sticky="w")
 input_lenovoleg = Entry(laptop, width=5, borderwidth=5, relief=GROOVE)
 input_lenovoleg.grid(row=1, column=1, padx=10, pady=10)
+input_lenovoleg.insert(0, 0)
 
 msigam = Label(laptop, text="MSI Gaming", font=("Arial", 15), bg="grey20", fg="gold")
 msigam.grid(row=2, column=0, padx=5, pady=5, sticky="w")
 input_msigam = Entry(laptop, width=5, borderwidth=5, relief=GROOVE)
 input_msigam.grid(row=2, column=1, padx=10, pady=10)
+input_msigam.insert(0, 0)
 
 # Keyboard section
 keyboard = LabelFrame(product, text="Keyboard", font=("Arial", 15), bg="grey20", fg="gold")
@@ -72,16 +75,19 @@ royklud = Label(keyboard, text="Royal Kludge", font=("Arial", 15), bg="grey20", 
 royklud.grid(row=0, column=0, padx=5, pady=5, sticky="w")
 input_royklud = Entry(keyboard, width=5, borderwidth=5, relief=GROOVE)
 input_royklud.grid(row=0, column=1, padx=10, pady=10)
+input_royklud.insert(0, 0)
 
 zifrn = Label(keyboard, text="Zif 90", font=("Arial", 15), bg="grey20", fg="gold")
 zifrn.grid(row=1, column=0, padx=5, pady=5, sticky="w")
 input_zifrn = Entry(keyboard, width=5, borderwidth=5, relief=GROOVE)
 input_zifrn.grid(row=1, column=1, padx=10, pady=10)
+input_zifrn.insert(0, 0)
 
 fanth = Label(keyboard, text="Fanth 45", font=("Arial", 15), bg="grey20", fg="gold")
 fanth.grid(row=2, column=0, padx=5, pady=5, sticky="w")
 input_fanth = Entry(keyboard, width=5, borderwidth=5, relief=GROOVE)
 input_fanth.grid(row=2, column=1, padx=10, pady=10)
+input_fanth.insert(0, 0)
 
 #Accessory section
 accessory = LabelFrame(product, text="Accessory", font=("Arial", 15), relief=GROOVE, bg="grey20", fg="gold")
@@ -91,16 +97,19 @@ mouse = Label(accessory, text="Mouse Gaming", font=("Arial", 15), bg="grey20", f
 mouse.grid(row=0, column=0, padx=5, pady=5, sticky="w")
 input_mouse = Entry(accessory, width=5, borderwidth=5, relief=GROOVE)
 input_mouse.grid(row=0, column=1, padx=10, pady=10)
+input_mouse.insert(0, 0)
 
 mousepad = Label(accessory, text="Mouse Pad", font=("Arial", 15), bg="grey20", fg="gold")
 mousepad.grid(row=1, column=0, padx=5, pady=5, sticky="w")
 input_mousepad = Entry(accessory, width=5, borderwidth=5, relief=GROOVE)
 input_mousepad.grid(row=1, column=1, padx=10, pady=10)
+input_mousepad.insert(0, 0)
 
 coolfan = Label(accessory, text="Cooling Fan", font=("Arial", 15), bg="grey20", fg="gold")
 coolfan.grid(row=2, column=0, padx=5, pady=5, sticky="w")
 input_coolfan = Entry(accessory, width=5, borderwidth=5, relief=GROOVE)
 input_coolfan.grid(row=2, column=1, padx=10, pady=10)
+input_coolfan.insert(0, 0)
 
 #billframe
 billframe = Frame(product, bd=5, relief=GROOVE)
@@ -152,7 +161,17 @@ input_hargaaccessorytax.grid(row=5, column=4, padx=5, pady=10)
 buttonframe = LabelFrame(daftarmenu, bd=8, relief=GROOVE, bg="gray20", fg="gold")
 buttonframe.grid(row=4, column=6, columnspan=4, padx=8, pady=5, sticky="ew")
 
-totalButton = Button(buttonframe, text="Total", font=("Arial", 15), bg='gray20', fg='white', command=total_laptop(input_asustuf, input_lenovoleg, input_msigam))
+def total_laptop():
+    asus_tuf_price = int(input_asustuf.get())*15000000
+    lenovo_leg_price = int(input_lenovoleg.get())*20000000
+    msi_gam_price = int(input_msigam.get())*  18000000  
+
+    total = asus_tuf_price + lenovo_leg_price + msi_gam_price
+    total_formatted = "{:,.0f}".format(total)
+    input_hargalaptop.delete(0, END)
+    input_hargalaptop.insert(0, total_formatted)
+
+totalButton = Button(buttonframe, text="Total", font=("Arial", 15), bg='gray20', fg='white', command=lambda:total_laptop())
 totalButton.grid(row=0, column=7, padx=5,pady=5)
 
 
