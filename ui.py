@@ -1,24 +1,20 @@
 from tkinter import *
-# from fungsi import total_laptop
 from PIL import Image, ImageTk
-
-# def limit_width(event, max_width):
-#     if event.width > max_width:
-#         window.grid_columnconfigure(0, minsize=max_width)
-#     else:
-#         window.grid_columnconfigure(0, minsize=event.width)
 
 window = Tk()
 #test
 window.title("POS Tech Store Hala Madrid")
 window.geometry("965x722")
-icon_image = Image.open('D:\\Materi\\Kuliah\\Kerjaan\\Asisten Dosen\\Prinsip Pemrograman\\pythonwindows\\uas\\pict.jpg')
-icon_image = icon_image.resize((32, 32), Image.LANCZOS)  # Resize image to fit as an icon
+icon_image = Image.open("D:\\B. Tugas Kuliah\\Prinsip Pemrograman\\Project_UAs\\pict.jpg")
+#Ganti lokasi file di template, menjadi lokasi di mana kalian menyimpan file template ini: 
+#1. Cari gambar "madrid.png" di folder uas, lalu klik kiri dan klik kanan pada gambar, pilih opsi "copy image path"
+#3. Pastkekan path tersebut ke dalam kurung di sintaks line 181, jika ada "/", ditambah jadi "//"
+icon_image = icon_image.resize((32, 32), Image.LANCZOS)  # Mengatur ulang ukuran gambar supaya fit to screen
 icon_img = ImageTk.PhotoImage(icon_image)
 window.iconphoto(False, icon_img)
 
 # Heading
-heading = Label(window, text="Tech Store Hala Madrid", font=("Times New Roman", 20), relief=GROOVE, bg="grey20", fg="gold")
+heading = Label(window, text="Tech Store Hala Madrid", font=("Times New Roman", 20), relief=GROOVE, bg="grey20", fg="gold")#menampilkan nama POS di window
 heading.grid(row=0, column=0, columnspan=5, sticky="ew")
 
 # Customer Details section
@@ -53,7 +49,7 @@ asustuf = Label(laptop, text="Asus TUF", font=("Arial", 15),bg="grey20", fg="gol
 asustuf.grid(row=0, column=0, padx=1, pady=5, sticky="w")
 input_asustuf = Entry(laptop, width=5, borderwidth=5, relief=GROOVE)
 input_asustuf.grid(row=0, column=1, padx=10, pady=10)
-input_asustuf.insert(0, 0)
+input_asustuf.insert(0, 0) #menentukan default value, supaya input tidak kosong (literal error "None")
 
 lenovoleg = Label(laptop, text="Lenovo LEGION", font=("Arial", 15), bg="grey20", fg="gold")
 lenovoleg.grid(row=1, column=0, padx=5, pady=5, sticky="w")
@@ -122,7 +118,7 @@ scrollbar = Scrollbar(billframe, orient=VERTICAL)
 scrollbar.pack(side=RIGHT, fill=Y)
 textarea = Text(billframe, height=15, width=30, yscrollcommand=scrollbar.set)
 textarea.pack()
-scrollbar.config(command=textarea.yview)
+scrollbar.config(command=textarea.yview) #menampilkan scroll bar di tab tagihan
 
 #daftar menu
 daftarmenu = LabelFrame(window, text="Detail Menu", font=("Arial", 15), bg="grey20", fg="gold")
@@ -161,7 +157,7 @@ input_hargaaccessorytax.grid(row=5, column=4, padx=5, pady=10)
 buttonframe = LabelFrame(daftarmenu, bd=8, relief=GROOVE, bg="gray20", fg="gold")
 buttonframe.grid(row=4, column=6, columnspan=4, padx=8, pady=5, sticky="ew")
 
-def total_laptop():
+def total_laptop(): #fungsi untuk menampilkan total harga laptop ke entry box
     asus_tuf_price = int(input_asustuf.get())*15000000
     lenovo_leg_price = int(input_lenovoleg.get())*20000000
     msi_gam_price = int(input_msigam.get())*  18000000  
@@ -171,15 +167,17 @@ def total_laptop():
     input_hargalaptop.delete(0, END)
     input_hargalaptop.insert(0, total_formatted)
 
-totalButton = Button(buttonframe, text="Total", font=("Arial", 15), bg='gray20', fg='white', command=lambda:total_laptop())
+totalButton = Button(buttonframe, text="Total", font=("Arial", 15), bg='gray20', fg='white', command=lambda:total_laptop()) #lambda untuk memberikan delay (the button will not be activated until the function is called or the button is cliked, event based)
 totalButton.grid(row=0, column=7, padx=5,pady=5)
 
 
 printButton = Button(buttonframe, text="Print", font=("Arial", 15), bg='gray20', fg='white')
 printButton.grid(row=0, column=8, padx=5, pady=5)
 
-control_image = Image.open('D:\\Materi\\Kuliah\\Kerjaan\\Asisten Dosen\\Prinsip Pemrograman\\pythonwindows\\uas\\madrid.png')
-#ganti direktori ini menjadi direktori tempat anda menyimpan gambar
+control_image = Image.open('D:\\B. Tugas Kuliah\\Prinsip Pemrograman\\Project_UAs\\madrid.png')
+#Ganti lokasi file di template, menjadi lokasi di mana kalian menyimpan file template ini: 
+#1. Cari gambar "madrid.png" di folder uas, lalu klik kiri dan klik kanan pada gambar, pilih opsi "copy image path"
+#3. Pastkekan path tersebut ke dalam kurung di sintaks line 181, jika ada "/", ditambah jadi "//"
 control_image = control_image.resize((75, 100), Image.LANCZOS)
 control_img = ImageTk.PhotoImage(control_image)
 
